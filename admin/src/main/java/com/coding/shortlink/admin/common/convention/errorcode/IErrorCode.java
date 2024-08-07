@@ -15,20 +15,20 @@
  * limitations under the License.
  */
 
-package com.coding.shortlink.admin;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.coding.shortlink.admin.common.convention.errorcode;
 
 /**
- * 短链接后管应用
+ * 平台错误码
  */
-@SpringBootApplication
-@MapperScan("com.coding.shortlink.admin.dao.mapper")
-public class ShortLinkAdminApplication {
+public interface IErrorCode {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ShortLinkAdminApplication.class, args);
-    }
+    /**
+     * 错误码
+     */
+    String code();
+
+    /**
+     * 错误信息
+     */
+    String message();
 }

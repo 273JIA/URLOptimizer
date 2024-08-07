@@ -15,20 +15,39 @@
  * limitations under the License.
  */
 
-package com.coding.shortlink.admin;
+package com.coding.shortlink.admin.dto.resp;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Data;
 
 /**
- * 短链接后管应用
+ * 用户返回参数响应
  */
-@SpringBootApplication
-@MapperScan("com.coding.shortlink.admin.dao.mapper")
-public class ShortLinkAdminApplication {
+@Data
+public class UserRespDTO {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ShortLinkAdminApplication.class, args);
-    }
+    /**
+     * id
+     */
+    private Long id;
+
+    /**
+     * 用户名
+     */
+    private String username;
+
+    /**
+     * 真实姓名
+     */
+    private String realName;
+
+    /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
+     * 邮箱
+     */
+    private String mail;
 }

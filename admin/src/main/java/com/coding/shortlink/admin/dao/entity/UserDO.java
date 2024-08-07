@@ -15,20 +15,49 @@
  * limitations under the License.
  */
 
-package com.coding.shortlink.admin;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.coding.shortlink.admin.dao.entity;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 /**
- * 短链接后管应用
+ * 用户持久层实体
  */
-@SpringBootApplication
-@MapperScan("com.coding.shortlink.admin.dao.mapper")
-public class ShortLinkAdminApplication {
+@Data
+@TableName("t_user")
+public class UserDO{
 
-    public static void main(String[] args) {
-        SpringApplication.run(ShortLinkAdminApplication.class, args);
-    }
+    /**
+     * id
+     */
+    private Long id;
+
+    /**
+     * 用户名
+     */
+    private String username;
+
+    /**
+     * 密码
+     */
+    private String password;
+
+    /**
+     * 真实姓名
+     */
+    private String realName;
+
+    /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
+     * 邮箱
+     */
+    private String mail;
+
+    /**
+     * 注销时间戳
+     */
+    private Long deletionTime;
 }

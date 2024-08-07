@@ -15,20 +15,39 @@
  * limitations under the License.
  */
 
-package com.coding.shortlink.admin;
+package com.coding.shortlink.admin.common.enums;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.coding.shortlink.admin.common.convention.errorcode.IErrorCode;
 
 /**
- * 短链接后管应用
+ * 用户错误码
  */
-@SpringBootApplication
-@MapperScan("com.coding.shortlink.admin.dao.mapper")
-public class ShortLinkAdminApplication {
+public enum UserErrorCodeEnum implements IErrorCode {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ShortLinkAdminApplication.class, args);
+    USER_NULL("B000200", "用户记录不存在"),
+
+    USER_NAME_EXIST("B000201", "用户名已存在"),
+
+    USER_EXIST("B000202", "用户记录已存在"),
+
+    USER_SAVE_ERROR("B000203", "用户记录新增失败");
+
+    private final String code;
+
+    private final String message;
+
+    UserErrorCodeEnum(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
+    @Override
+    public String code() {
+        return code;
+    }
+
+    @Override
+    public String message() {
+        return message;
     }
 }

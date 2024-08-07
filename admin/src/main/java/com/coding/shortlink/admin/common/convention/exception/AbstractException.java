@@ -15,20 +15,27 @@
  * limitations under the License.
  */
 
-package com.coding.shortlink.admin;
+package com.coding.shortlink.admin.common.convention.exception;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.coding.shortlink.admin.common.convention.errorcode.IErrorCode;
+import lombok.Getter;
+import org.springframework.util.StringUtils;
+
+import java.util.Optional;
 
 /**
- * 短链接后管应用
+ * 抽象项目中三类异常体系，客户端异常、服务端异常以及远程服务调用异常
  */
-@SpringBootApplication
-@MapperScan("com.coding.shortlink.admin.dao.mapper")
-public class ShortLinkAdminApplication {
+@Getter
+public abstract class AbstractException extends RuntimeException {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ShortLinkAdminApplication.class, args);
+    public final String errorCode;
+
+    public final String errorMessage;
+
+    public AbstractException(String message, Throwable throwable, IErrorCode errorCode) {
+        super(message, throwable);
+        this.errorCode = errorCode.code();
+        this.errorMessage = Optional.ofNullable(StringUtils.hasLength(message) ? message : null).orElse(errorCode.message());
     }
 }
