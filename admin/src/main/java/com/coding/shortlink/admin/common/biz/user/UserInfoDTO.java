@@ -15,23 +15,28 @@
  * limitations under the License.
  */
 
-package com.coding.shortlink.admin.dao.entity;
+package com.coding.shortlink.admin.common.biz.user;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.coding.shortlink.admin.common.database.BaseDO;
+import com.alibaba.fastjson2.annotation.JSONField;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Builder;
 
 /**
- * 用户持久层实体
+ * 用户信息实体
  */
 @Data
-@TableName("t_user")
-public class UserDO extends BaseDO {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class UserInfoDTO {
 
     /**
-     * id
+     * 用户 ID
      */
-    private Long id;
+    @JSONField(name = "id")
+    private String userId;
 
     /**
      * 用户名
@@ -39,27 +44,7 @@ public class UserDO extends BaseDO {
     private String username;
 
     /**
-     * 密码
-     */
-    private String password;
-
-    /**
      * 真实姓名
      */
     private String realName;
-
-    /**
-     * 手机号
-     */
-    private String phone;
-
-    /**
-     * 邮箱
-     */
-    private String mail;
-
-    /**
-     * 注销时间戳
-     */
-    private Long deletionTime;
 }
